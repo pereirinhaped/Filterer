@@ -9,50 +9,54 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-	@IBOutlet weak var centralImageView: UIImageView!
-	
-	@IBOutlet weak var applyButton: UIButton!
 	
 	let image = UIImage(named: "enso-green-logo.png")
+	var imageView = UIImageView()
 	
 	var resultImg: UIImage?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Not being used
-		func getColorAverages(image: RGBAImage) -> [Int] {
-			var totalRed = 0
-			var totalGreen = 0
-			var totalBlue = 0
-			let totalPixels = image.pixels.count
-			
-			for x in 0..<image.pixels.count {
-				var pixel = image.pixels[x]
-				
-				totalRed += Int(pixel.red)
-				totalGreen += Int(pixel.green)
-				totalBlue += Int(pixel.blue)
-				
-			}
-			
-			var result = [Int]()
-			
-			result.append(totalRed / totalPixels)
-			result.append(totalGreen / totalPixels)
-			result.append(totalBlue / totalPixels)
-			
-			return result
-		}
+		// Definition of main View dimensions
+		let viewWidth = view.frame.width
+		let viewHeight = view.frame.height
 		
+		// Declaration and injection of default image in main View
+		imageView.image = image
+		
+		let imageX = viewWidth / 2 - 90
+		let imageY = viewHeight / 2 - 90
+		let imageWidth: CGFloat = 180
+		let imageHeight: CGFloat = 180
+		
+		imageView.frame = CGRect(x: imageX, y: imageY, width: imageWidth, height: imageHeight)
+		
+		view.addSubview(imageView)
+		
+		// Declaration and injection of Button in main view
+		let buttonX = imageX
+		let buttonY = imageY + imageHeight + 8
+		let buttonW = imageWidth
+		let buttonH: CGFloat = 30
+		let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonW, height: buttonH)
+		let selectedBkgColor = UIColor.blueColor().colorWithAlphaComponent(0.6)
+		
+		let applyFilterBtn = UIButton(frame: buttonFrame)
+		applyFilterBtn.showsTouchWhenHighlighted = true
+		applyFilterBtn.setTitle("Apply Filter", forState: .Normal)
+		applyFilterBtn.setTitle("Revert Filter", forState: .Selected)
+		applyFilterBtn.setTitleColor(UIColor.blueColor(), forState: .Normal)
+		applyFilterBtn.setTitleColor(UIColor.whiteColor(), forState: .Selected)
+		applyFilterBtn.setBackgroundColor(selectedBkgColor, forUIControlState: .Selected)
+		
+		applyFilterBtn.addTarget(self, action: #selector(self.applyBtnPressed), forControlEvents: .TouchUpInside)
+		view.addSubview(applyFilterBtn)
+		
+		// Filtered image
 		var myRGBA = RGBAImage(image: image!)!
 		
-		// *** DELETE AFTER ***
-		// Value for testing
 		let redAvg = 50
-		
-		// *** DELETE AFTER ***
 		
 		for x in 0..<myRGBA.pixels.count {
 			var pixel = myRGBA.pixels[x]
@@ -71,18 +75,42 @@ class ViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
-	@IBAction func applyFilterPressed(sender: AnyObject) {
-		if applyButton.selected {
-			centralImageView.image = image
-			applyButton.selected = false
+	
+	func applyBtnPressed(sender: UIButton) {
+		if sender.selected {
+			imageView.image = image
+			sender.selected = false
 		} else {
-			centralImageView.image = resultImg
-			applyButton.selected = true
+			imageView.image = resultImg
+			sender.selected = true
 		}
 		
-		
 	}
-
+	
+	// Not being used
+	func getColorAverages(image: RGBAImage) -> [Int] {
+		var totalRed = 0
+		var totalGreen = 0
+		var totalBlue = 0
+		let totalPixels = image.pixels.count
+		
+		for x in 0..<image.pixels.count {
+			var pixel = image.pixels[x]
+			
+			totalRed += Int(pixel.red)
+			totalGreen += Int(pixel.green)
+			totalBlue += Int(pixel.blue)
+			
+		}
+		
+		var result = [Int]()
+		
+		result.append(totalRed / totalPixels)
+		result.append(totalGreen / totalPixels)
+		result.append(totalBlue / totalPixels)
+		
+		return result
+	}
+	
 }
 

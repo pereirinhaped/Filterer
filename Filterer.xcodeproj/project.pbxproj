@@ -13,6 +13,7 @@
 		C14D793A1D5903B0004288BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C14D79391D5903B0004288BB /* Assets.xcassets */; };
 		C14D793D1D5903B0004288BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14D793B1D5903B0004288BB /* LaunchScreen.storyboard */; };
 		C14D79451D5945D4004288BB /* RGBAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D79441D5945D4004288BB /* RGBAImage.swift */; };
+		C1B769831D5A99EA006FE800 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B769821D5A99EA006FE800 /* ButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C14D793C1D5903B0004288BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C14D793E1D5903B0004288BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C14D79441D5945D4004288BB /* RGBAImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAImage.swift; sourceTree = "<group>"; };
+		C1B769821D5A99EA006FE800 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				C14D79391D5903B0004288BB /* Assets.xcassets */,
 				C14D793B1D5903B0004288BB /* LaunchScreen.storyboard */,
 				C14D793E1D5903B0004288BB /* Info.plist */,
+				C1B769821D5A99EA006FE800 /* ButtonExtension.swift */,
 			);
 			path = Filterer;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C14D79351D5903B0004288BB /* ViewController.swift in Sources */,
+				C1B769831D5A99EA006FE800 /* ButtonExtension.swift in Sources */,
 				C14D79451D5945D4004288BB /* RGBAImage.swift in Sources */,
 				C14D79331D5903B0004288BB /* AppDelegate.swift in Sources */,
 			);
@@ -293,6 +297,7 @@
 				C14D79431D5903B0004288BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
