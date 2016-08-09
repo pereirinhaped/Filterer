@@ -23,6 +23,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2J-4k-hRb">
                                 <rect key="frame" x="210.5" y="398" width="180" height="30"/>
                                 <state key="normal" title="Apply Filter"/>
+                                <state key="selected" title="Rever Filter"/>
                                 <connections>
                                     <action selector="applyFilterPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p6P-vi-daJ"/>
                                 </connections>
