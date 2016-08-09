@@ -10,11 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet weak var centralImageView: UIImageView!
+	
+	var resultImg: UIImage?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		let image = UIImage(named: "enso-green-logo.png")
 		
+		// Not being used
 		func getColorAverages(image: RGBAImage) -> [Int] {
 			var totalRed = 0
 			var totalGreen = 0
@@ -41,18 +46,23 @@ class ViewController: UIViewController {
 		
 		var myRGBA = RGBAImage(image: image!)!
 		
-		let redAvg = 121
+		// *** DELETE AFTER ***
+		// Value for testing
+		let redAvg = 50
+		
+		// *** DELETE AFTER ***
 		
 		for x in 0..<myRGBA.pixels.count {
 			var pixel = myRGBA.pixels[x]
 			let redDiff = Int(pixel.red) - redAvg
 			if redDiff > 0 {
-				pixel.red = UInt8(max(0,min(255, redAvg + redDiff * 5)))
+				pixel.red = UInt8(max(0,min(255, redAvg + redDiff * 50)))
 				myRGBA.pixels[x] = pixel
 			}
 		}
 		
-		let result = myRGBA.toUIImage()
+		resultImg = myRGBA.toUIImage()!
+
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -60,6 +70,9 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
+	@IBAction func applyFilterPressed(sender: AnyObject) {
+		centralImageView.image = resultImg
+	}
 
 }
 
