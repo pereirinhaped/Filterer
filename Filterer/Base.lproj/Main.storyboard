@@ -38,6 +38,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="d2J-4k-hRb" id="Dfi-8s-8Hh"/>
                         <outlet property="centralImageView" destination="nHr-9Y-GOK" id="8g1-UK-BZy"/>
                     </connections>
                 </viewController>

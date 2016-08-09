@@ -12,12 +12,15 @@ class ViewController: UIViewController {
 
 	@IBOutlet weak var centralImageView: UIImageView!
 	
+	@IBOutlet weak var applyButton: UIButton!
+	
+	let image = UIImage(named: "enso-green-logo.png")
 	var resultImg: UIImage?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let image = UIImage(named: "enso-green-logo.png")
+		applyButton.setTitle("Revert Filter", forState: .Selected)
 		
 		// Not being used
 		func getColorAverages(image: RGBAImage) -> [Int] {
@@ -71,7 +74,16 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func applyFilterPressed(sender: AnyObject) {
-		centralImageView.image = resultImg
+		if applyButton.selected {
+			centralImageView.image = nil
+			print("\(centralImageView.image)")
+			applyButton.selected = false
+		} else {
+			centralImageView.image = resultImg
+			applyButton.selected = true
+		}
+		
+		
 	}
 
 }
