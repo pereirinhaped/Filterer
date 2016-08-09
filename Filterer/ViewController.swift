@@ -12,7 +12,47 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		
+		let image = UIImage(named: "enso-green-logo.png")
+		
+		func getColorAverages(image: RGBAImage) -> [Int] {
+			var totalRed = 0
+			var totalGreen = 0
+			var totalBlue = 0
+			let totalPixels = image.pixels.count
+			
+			for x in 0..<image.pixels.count {
+				var pixel = image.pixels[x]
+				
+				totalRed += Int(pixel.red)
+				totalGreen += Int(pixel.green)
+				totalBlue += Int(pixel.blue)
+				
+			}
+			
+			var result = [Int]()
+			
+			result.append(totalRed / totalPixels)
+			result.append(totalGreen / totalPixels)
+			result.append(totalBlue / totalPixels)
+			
+			return result
+		}
+		
+		var myRGBA = RGBAImage(image: image!)!
+		
+		let redAvg = 121
+		
+		for x in 0..<myRGBA.pixels.count {
+			var pixel = myRGBA.pixels[x]
+			let redDiff = Int(pixel.red) - redAvg
+			if redDiff > 0 {
+				pixel.red = UInt8(max(0,min(255, redAvg + redDiff * 5)))
+				myRGBA.pixels[x] = pixel
+			}
+		}
+		
+		let result = myRGBA.toUIImage()
 	}
 
 	override func didReceiveMemoryWarning() {
